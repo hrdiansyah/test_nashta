@@ -98,6 +98,7 @@ public class mahasiswaController {
 //	        XSSFWorkbook workbook = new XSSFWorkbook(reapExcelDataFile.getInputStream());
 //	        XSSFSheet worksheet = workbook.getSheetAt(0);
 	        excelService.ReadDataFromExcel(reapExcelDataFile);
+	        return ResponseEntity.status(HttpStatus.OK).body(new ResponseJson(responseCodes.SUCCESS, "OK"));
 //	        for(int i=0; i<worksheet.getPhysicalNumberOfRows(); i++) {
 //	            mahasiswa tempStudent = new mahasiswa();
 //	            XSSFRow row = worksheet.getRow(i);
@@ -119,7 +120,6 @@ public class mahasiswaController {
 //		        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ResponseMessage(message));
 		        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new ResponseJson(responseCodes.OTHER, e.getMessage()));
 		      }
-	    return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ResponseJson(responseCodes.SUCCESS, "GAK OKE"));
 	    }
 
 }
